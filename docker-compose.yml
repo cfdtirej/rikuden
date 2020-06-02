@@ -18,5 +18,5 @@ services:
       - ./neo4j/conf:/conf
       - ./neo4j/import:/import
     environment:
-      - NEO4J_AUTH=neo4j/passwd
+      - NEO4J_AUTH=neo4j/password
 
