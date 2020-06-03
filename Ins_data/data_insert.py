@@ -6,7 +6,7 @@ import queries
 
 
 URL = 'bolt://localhost:7687'
-AUTH = ('neo4j', 'passwd')
+AUTH = ('neo4j', 'password')
 driver = GraphDatabase.driver(URL, auth=AUTH, encrypted=False)
 
 # query = '''
