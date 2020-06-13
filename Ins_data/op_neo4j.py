@@ -4,7 +4,7 @@ import datetime
 from neo4j import GraphDatabase
 
 HOST = 'bolt://localhost:7687'
-AUTH = ('neo4j', 'passwd')
+AUTH = ('neo4j', 'password')
 
 driver = GraphDatabase.driver(HOST, auth=AUTH , encrypted=False)
 
