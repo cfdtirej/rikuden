@@ -22,8 +22,6 @@ def create_nodes():
     Rel2 = Relationship(Point2, 'LENGTH', Point1)
     Rel1['length'] = 100
 
-    # graph.create(Point1)
-    # graph.create(Point2)
     graph.create(Rel1)
     graph.create(Rel2)
 
