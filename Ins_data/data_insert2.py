@@ -4,7 +4,7 @@ from py2neo.ogm import GraphObject
 
 def create_nodes():
     graph = Graph(
-        'bolt://192.168.30.145:7687',
+        'bolt://localhost:7687',
         auth=('neo4j', 'password')
     )
 
