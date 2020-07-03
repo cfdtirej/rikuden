@@ -55,6 +55,7 @@ json_body = {
 
     }
 }
+mesh_array = []
 for i in range(mesh_items_num):
     mesh_dict = {
         "meshcode": mesh_list[i],
@@ -67,11 +68,10 @@ for i in range(mesh_items_num):
             "right": relation_array[i][4]
         }
     }
-    json_body["Node"][str(mesh_list[i])] = mesh_dict
+    mesh_array.append(mesh_dict)
+    # json_body["Node"][str(mesh_list[i])] = mesh_dict
 
-mj = json.dumps(json_body, indent=4)
-print(mj)
-# with open('mesh_node_relation.json', 'w') as j:
-#     json.dumps(json_body, indent=4, j)
+with open(pwd + '/mesh.json', 'w') as f:
+    json.dump(mesh_array, f, indent=4, ensure_ascii=False)
 
 
