@@ -50,11 +50,6 @@ with open(csv_info_path, 'r') as info_csv:
     lng_list = [float(info_array[i][2]) for i in range(len(info_array))]
     mesh_items_num = len(mesh_list)
 
-json_body = {
-    "Node":{
-
-    }
-}
 mesh_array = []
 for i in range(mesh_items_num):
     mesh_dict = {
@@ -71,7 +66,11 @@ for i in range(mesh_items_num):
     mesh_array.append(mesh_dict)
     # json_body["Node"][str(mesh_list[i])] = mesh_dict
 
+json_body = {
+    "Node":mesh_array
+}
+
 with open(pwd + '/mesh.json', 'w') as f:
-    json.dump(mesh_array, f, indent=4, ensure_ascii=False)
+    json.dump(json_body, f, indent=4, ensure_ascii=False)
 
 
