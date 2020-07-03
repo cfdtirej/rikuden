@@ -50,24 +50,28 @@ with open(csv_info_path, 'r') as info_csv:
     lng_list = [float(info_array[i][2]) for i in range(len(info_array))]
     mesh_items_num = len(mesh_list)
 
-mesh_array = []
-for meshcode, latitude, longitude, relations in zip(mesh_list, lat_list, lng_list, relation_array):
-    for i in range(mesh_items_num):
-        mesh_dict = {
-            "meshcode": meshcode,
-            "latitude": latitude,
-            "logitude": longitude,
-            "relation": {
-                "up": relation_array[i][1],
-                "down": relation_array[i][2],
-                "left": relation_array[i][3],
-                "right": relation_array[i][4]
-            }
-        }
-        mesh_array.append(mesh_dict)
+json_body = {
+    "Node":{
 
-json_body = {"Node":mesh_array}
+    }
+}
+for i in range(mesh_items_num):
+    mesh_dict = {
+        "meshcode": mesh_list[i],
+        "latitude": lat_list[i],
+        "logitude": lng_list[i],
+        "relation": {
+            "up": relation_array[i][1],
+            "down": relation_array[i][2],
+            "left": relation_array[i][3],
+            "right": relation_array[i][4]
+        }
+    }
+    json_body["Node"][str(mesh_list[i])] = mesh_dict
+
+mj = json.dumps(json_body, indent=4)
+print(mj)
 # with open('mesh_node_relation.json', 'w') as j:
-#     json.dump(json_body, j)
+#     json.dumps(json_body, indent=4, j)
 
 
