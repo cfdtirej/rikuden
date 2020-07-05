@@ -19,27 +19,27 @@ with open(csv_rel_path, 'r') as rel_csv:
         for j in range(len(rel_array[0])): # range(12)
             base_mesh = rel_array[i][j]
             # relation meshcode
-            up_mesh = rel_array[i-1][j]
-            if up_mesh == rel_array[-1][j]:
-                up_mesh = None
+            north_mesh = rel_array[i-1][j]
+            if north_mesh == rel_array[-1][j]:
+                north_mesh = None
             try:
-                down_mesh = rel_array[i+1][j]
+                south_mesh = rel_array[i+1][j]
             except:
-                down_mesh = None
-            left_mesh = rel_array[i][j-1]
-            if left_mesh == rel_array[i][-1]:
-                left_mesh = None
+                south_mesh = None
+            west_mesh = rel_array[i][j-1]
+            if west_mesh == rel_array[i][-1]:
+                west_mesh = None
             try:
-                right_mesh = rel_array[i][j+1]
+                east_mesh = rel_array[i][j+1]
             except:
-                right_mesh = None
+                east_mesh = None
 
             relation_array.append([
                 base_mesh,
-                up_mesh,
-                down_mesh,
-                left_mesh,
-                right_mesh
+                north_mesh,
+                south_mesh,
+                west_mesh,
+                east_mesh
             ])
 
 with open(csv_info_path, 'r') as info_csv:
@@ -57,10 +57,10 @@ for i in range(mesh_items_num):
         "latitude": lat_list[i],
         "logitude": lng_list[i],
         "relation": {
-            "up": relation_array[i][1],
-            "down": relation_array[i][2],
-            "left": relation_array[i][3],
-            "right": relation_array[i][4]
+            "north": relation_array[i][1],
+            "south": relation_array[i][2],
+            "west": relation_array[i][3],
+            "east": relation_array[i][4]
         }
     }
     mesh_array.append(mesh_dict)
