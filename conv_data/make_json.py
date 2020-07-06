@@ -2,6 +2,7 @@ import csv
 import json
 import os
 
+# working directory is ./conv_data
 pwd = os.getcwd()
 print(pwd)
 
