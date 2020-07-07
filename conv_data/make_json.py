@@ -2,6 +2,7 @@ import csv
 import json
 import os
 
+# working directory is ./conv_data
 pwd = os.getcwd()
 print(pwd)
 
@@ -17,20 +18,20 @@ with open(csv_rel_path, 'r') as rel_csv:
     relation_array = []
     for i in range(len(rel_array)): # range(38)
         for j in range(len(rel_array[0])): # range(12)
-            base_mesh = rel_array[i][j]
+            base_mesh = int(rel_array[i][j])
             # relation meshcode
-            north_mesh = rel_array[i-1][j]
-            if north_mesh == rel_array[-1][j]:
+            north_mesh = int(rel_array[i-1][j])
+            if north_mesh == int(rel_array[-1][j]):
                 north_mesh = None
             try:
-                south_mesh = rel_array[i+1][j]
+                south_mesh = int(rel_array[i+1][j])
             except:
                 south_mesh = None
-            west_mesh = rel_array[i][j-1]
-            if west_mesh == rel_array[i][-1]:
+            west_mesh = int(rel_array[i][j-1])
+            if west_mesh == int(rel_array[i][-1]):
                 west_mesh = None
             try:
-                east_mesh = rel_array[i][j+1]
+                east_mesh = int(rel_array[i][j+1])
             except:
                 east_mesh = None
 
@@ -55,7 +56,7 @@ for i in range(mesh_items_num):
     mesh_dict = {
         "meshcode": mesh_list[i],
         "latitude": lat_list[i],
-        "logitude": lng_list[i],
+        "longitude": lng_list[i],
         "relation": {
             "north": relation_array[i][1],
             "south": relation_array[i][2],
