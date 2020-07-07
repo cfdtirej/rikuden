@@ -14,3 +14,10 @@ MERGE (n2:CrossPoints {mesh:$n2_mesh, longitude:$n2_lng, latitude:$n2_lat})
 CREATE (n1)-[l1:LENGTH {len:$l1_len}]->(n2) 
 CREATE (n1)<-[l2:LENGTH {len:$l2_len}]-(n2) 
 '''
+
+node_association = '''
+MATCH (main_node:Mesh {meshcode:$main_mesh}),
+      (to_node:Mesh {meshcode:$to_mesh})
+MERGE (main_node)-[:LENGTH {length:$length}]->(to_node)
+MERGE (main_node)<-[:LENGTH {length:$length}]-(to_node)
+'''
