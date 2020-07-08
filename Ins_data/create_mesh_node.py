@@ -41,19 +41,20 @@ def create_mesh_graph():
         west_mesh = relation_dict[i]['west']
         east_mesh = relation_dict[i]['east']
         west_east_length = 559
+
         if north_mesh != None:
             with driver.session() as session:
                 session.write_transaction(node_association, main_mesh, north_mesh, north_south_length)
 
-        elif south_mesh != None:
+        if south_mesh != None:
             with driver.session() as session:
                 session.write_transaction(node_association, main_mesh, south_mesh, north_south_length)
 
-        elif west_mesh != None:
+        if west_mesh != None:
             with driver.session() as session:
                 session.write_transaction(node_association, main_mesh, west_mesh, west_east_length)
 
-        elif east_mesh != None:
+        if east_mesh != None:
             with driver.session() as session:
                 session.write_transaction(node_association, main_mesh, east_mesh, west_east_length)
 
