@@ -12,37 +12,37 @@ csv_info_path = pwd + '/mesh_info.csv'
 with open(csv_rel_path, 'r') as rel_csv:
     rel_reader = csv.reader(rel_csv)
     rel_array = [i for i in rel_reader] # [[],[]]
-    nones = lambda n: [None for _ in range(n)]
-    up, down, left, right = nones(4)
+# print(rel_array)
 
-    relation_array = []
-    for i in range(len(rel_array)): # range(38)
-        for j in range(len(rel_array[0])): # range(12)
-            # base_mesh = int(rel_array[i][j])
-            # relation meshcode
-            north_mesh = int(rel_array[i-1][j])
-            if north_mesh == int(rel_array[-1][j]):
-                north_mesh = None
-            try:
-                south_mesh = int(rel_array[i+1][j])
-            except IndexError:
-                south_mesh = None
-            west_mesh = int(rel_array[i][j-1])
-            if west_mesh == int(rel_array[i][-1]):
-                west_mesh = None
-            try:
-                east_mesh = int(rel_array[i][j+1])
-            except IndexError:
-                east_mesh = None
+relation_array = []
+for i in range(len(rel_array[0])):
+    for j in range(len(rel_array)):
+        base_mesh = int(rel_array[j][i])
+        # relation meshcode
+        north_mesh = int(rel_array[j-1][i])
+        if north_mesh == int(rel_array[-1][i]):
+            north_mesh = None
+        try:
+            south_mesh = int(rel_array[j+1][i])
+        except IndexError:
+            south_mesh = None
+        west_mesh = int(rel_array[j][i-1])
+        if west_mesh == int(rel_array[j][-1]):
+            west_mesh = None
+        try:
+            east_mesh = int(rel_array[j][i+1])
+        except IndexError:
+            east_mesh = None
 
-            relation_array.append([
-                # base_mesh,
-                north_mesh,
-                south_mesh,
-                west_mesh,
-                east_mesh
-            ])
-print(rel_array)
+        relation_array.append([
+            # base_mesh,
+            north_mesh,
+            south_mesh,
+            west_mesh,
+            east_mesh,
+            base_mesh
+        ])
+
 with open(csv_info_path, 'r') as info_csv:
     info_reader = csv.reader(info_csv)
     info_array = [i for i in info_reader]
@@ -71,7 +71,7 @@ json_body = {
     "Node":mesh_array
 }
 
-# with open(pwd + '/mesh.json', 'w') as f:
-#     json.dump(json_body, f, indent=4, ensure_ascii=False)
+with open(pwd + '/mesh.json', 'w') as f:
+    json.dump(json_body, f, indent=4, ensure_ascii=False)
 
 
