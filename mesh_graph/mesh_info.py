@@ -3,7 +3,7 @@ import os
 import pprint
 
 pwd = os.getcwd()
-path = pwd + '/Ins_data/mesh.json'
+path = pwd + '/mesh_graph/mesh.json'
 
 # mesh.json
 with open(path, 'r', encoding='utf-8') as f:
