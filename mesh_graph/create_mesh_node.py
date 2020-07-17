@@ -18,7 +18,7 @@ relation_dict = mesh_info.relation_dict_list
 
 def create_mesh_graph():
 
-    graphdb = Graph(HOST,auth=AUTH)
+    graphdb = Graph(HOST, auth=AUTH)
     for i in range(node_num):
         node = Node('Mesh')
         node['name'] = 'Mesh_' + str(mesh[i])
