@@ -24,18 +24,19 @@ def merge_tx(tx, north, south, west, east, name, meshcode, latitude, longitude, 
 
 def update_tx(tx, meshcode, time, latest_used, latest_stored,
               after_30min, after_60min, after_90min, after_120min, after_150min, after_180min):
-    tx.run(query.update_charger,
-           meshcode=meshcode,
-           time=time,
-           latest_used=latest_used,
-           latest_stored=latest_stored,
-           after_30min=after_30min,
-           after_60min=after_60min,
-           after_90min=after_90min,
-           after_120min=after_120min,
-           after_150min=after_150min,
-           after_180min=after_180min
-           )
+    tx.run(
+        query.update_charger,
+        meshcode=meshcode,
+        time=time,
+        latest_used=latest_used,
+        latest_stored=latest_stored,
+        after_30min=after_30min,
+        after_60min=after_60min,
+        after_90min=after_90min,
+        after_120min=after_120min,
+        after_150min=after_150min,
+        after_180min=after_180min
+    )
 
 
 class ChargerGraph:
