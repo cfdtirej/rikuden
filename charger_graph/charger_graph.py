@@ -85,3 +85,5 @@ class ChargerGraph:
                 self.property['ns_length'],
                 self.property['we_length']
         )
+
+
