@@ -19,7 +19,13 @@ MERGE (charger)<-[:LENGTH { length:$we_length }]-(east)
 
 update_charger = '''
 MATCH (c:Charger { meshcode: $meshcode }) 
-SET c.time=$time, c.latest_used=$latest_used, c.latest_stored=$latest_stored
-SET c.after_30min=$after_30min, c.after_60min=$after_60min, c.after_90min=$after_90min 
-SET c.after_120min=$after_120min, c.after_150min=$after_150min, c.after_180min=$after_180min
+SET c.time=$time, c.used_latest=$used_latest, c.stored_latest=$stored_latest
+
+SET c.used_after_30min=$used_after_30min, c.used_after_60min=$used_after_60min 
+SET c.used_after_90min=$used_after_90min, c.used_after_120min=$used_after_120min 
+SET c.used_after_150min=$used_after_150min, c.used_after_180min=$used_after_180min 
+
+SET c.stored_after_30min=$stored_after_30min, c.stored_after_60min=$stored_after_60min 
+SET c.stored_after_90min=$stored_after_90min, c.stored_after_120min=$stored_after_120min 
+SET c.stored_after_150min=$stored_after_150min, c.stored_after_180min=$stored_after_180min
 '''

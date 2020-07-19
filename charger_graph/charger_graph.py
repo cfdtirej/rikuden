@@ -22,20 +22,29 @@ def merge_tx(tx, north, south, west, east, name, meshcode, latitude, longitude, 
     )
 
 
-def update_tx(tx, meshcode, time, latest_used, latest_stored,
-              after_30min, after_60min, after_90min, after_120min, after_150min, after_180min):
+def update_tx(tx, meshcode, time, used_latest, stored_latest,
+              used_after_30min, used_after_60min, used_after_90min,
+              used_after_120min, used_after_150min, used_after_180min,
+              stored_after_30min, stored_after_60min, stored_after_90min,
+              stored_after_120min, stored_after_150min, stored_after_180min):
     tx.run(
         query.update_charger,
         meshcode=meshcode,
         time=time,
-        latest_used=latest_used,
-        latest_stored=latest_stored,
-        after_30min=after_30min,
-        after_60min=after_60min,
-        after_90min=after_90min,
-        after_120min=after_120min,
-        after_150min=after_150min,
-        after_180min=after_180min
+        used_latest=used_latest,
+        stored_latest=stored_latest,
+        used_after_30min=used_after_30min,
+        used_after_60min=used_after_60min,
+        used_after_90min=used_after_90min,
+        used_after_120min=used_after_120min,
+        used_after_150min=used_after_150min,
+        used_after_180min=used_after_180min,
+        stored_after_30min=stored_after_30min,
+        stored_after_60min=stored_after_60min,
+        stored_after_90min=stored_after_90min,
+        stored_after_120min=stored_after_120min,
+        stored_after_150min=stored_after_150min,
+        stored_after_180min=stored_after_180min
     )
 
 
@@ -46,30 +55,13 @@ class ChargerGraph:
         self.auth = auth
         self.property = kwargs
 
-    def is_charger(self):
+    def is_charger_graph(self):
         graphdb = Graph(self.host, auth=self.auth)
         nodes = NodeMatcher(graphdb)
         charger = nodes.match(self.property['node_label'], name=self.property['name']).first()
         return charger
 
-    def update_charger_graph(self):
-        driver = GraphDatabase.driver(self.host, auth=self.auth, encrypted=False)
-        with driver.session() as session:
-            session.write_transaction(
-                update_tx,
-                self.property['meshcode'],
-                self.property['time'],
-                self.property['latest_used'],
-                self.property['latest_stored'],
-                self.property['after_30min'],
-                self.property['after_60min'],
-                self.property['after_90min'],
-                self.property['after_120min'],
-                self.property['after_150min'],
-                self.property['after_180min'],
-            )
-
-    def merge_cherger_graph(self):
+    def merge_charger_graph(self):
         driver = GraphDatabase.driver(self.host, auth=self.auth, encrypted=False)
         with driver.session() as session:
             session.write_transaction(
@@ -86,4 +78,26 @@ class ChargerGraph:
                 self.property['we_length']
         )
 
+    def update_charger_graph(self):
+        driver = GraphDatabase.driver(self.host, auth=self.auth, encrypted=False)
+        with driver.session() as session:
+            session.write_transaction(
+                update_tx,
+                self.property['meshcode'],
+                self.property['time'],
+                self.property['used_latest'],
+                self.property['stored_latest'],
+                self.property['used_after_30min'],
+                self.property['used_after_60min'],
+                self.property['used_after_90min'],
+                self.property['used_after_120min'],
+                self.property['used_after_150min'],
+                self.property['used_after_180min'],
+                self.property['stored_after_30min'],
+                self.property['stored_after_60min'],
+                self.property['stored_after_90min'],
+                self.property['stored_after_120min'],
+                self.property['stored_after_150min'],
+                self.property['stored_after_180min'],
+            )
 
