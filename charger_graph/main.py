@@ -20,6 +20,10 @@ if __name__ == '__main__':
 
     charger1_json = settings.graph_json
     charger1_json['Label'] = 'Charger1'
+    charger1_json['north'] = settings.charger1['relation']['north']
+    charger1_json['south'] = settings.charger1['relation']['south']
+    charger1_json['west'] = settings.charger1['relation']['west']
+    charger1_json['east'] = settings.charger1['relation']['east']
     charger1_json['name'] = 'charger1'
     charger1_json['meshcode'] = settings.charger1['meshcode']
     charger1_json['latitude'] = settings.charger1['latitude']
@@ -39,14 +43,14 @@ if __name__ == '__main__':
     charger1_json['stored_after_120'] = random.randint(500, 600)
     charger1_json['stored_after_150'] = random.randint(500, 600)
     charger1_json['stored_after_180'] = random.randint(500, 600)
-    charger1_json['north'] = settings.charger1['relation']['north']
-    charger1_json['south'] = settings.charger1['relation']['south']
-    charger1_json['west'] = settings.charger1['relation']['west']
-    charger1_json['east'] = settings.charger1['relation']['east']
     main(charger1_json)
 
     charger2_json = settings.graph_json
     charger2_json['Label'] = 'Charger2'
+    charger2_json['north'] = settings.charger2['relation']['north']
+    charger2_json['south'] = settings.charger2['relation']['south']
+    charger2_json['west'] = settings.charger2['relation']['west']
+    charger2_json['east'] = settings.charger2['relation']['east']
     charger2_json['name'] = 'charger2'
     charger2_json['meshcode'] = settings.charger2['meshcode']
     charger2_json['latitude'] = settings.charger2['latitude']
@@ -66,14 +70,14 @@ if __name__ == '__main__':
     charger2_json['stored_after_120'] = random.randint(500, 600)
     charger2_json['stored_after_150'] = random.randint(500, 600)
     charger2_json['stored_after_180'] = random.randint(500, 600)
-    charger2_json['north'] = settings.charger2['relation']['north']
-    charger2_json['south'] = settings.charger2['relation']['south']
-    charger2_json['west'] = settings.charger2['relation']['west']
-    charger2_json['east'] = settings.charger2['relation']['east']
     main(charger2_json)
 
     charger3_json = settings.graph_json
     charger3_json['Label'] = 'Charger3'
+    charger3_json['north'] = settings.charger3['relation']['north']
+    charger3_json['south'] = settings.charger3['relation']['south']
+    charger3_json['west'] = settings.charger3['relation']['west']
+    charger3_json['east'] = settings.charger3['relation']['east']
     charger3_json['name'] = 'charger3'
     charger3_json['meshcode'] = settings.charger3['meshcode']
     charger3_json['latitude'] = settings.charger3['latitude']
@@ -93,14 +97,14 @@ if __name__ == '__main__':
     charger3_json['stored_after_120'] = random.randint(500, 600)
     charger3_json['stored_after_150'] = random.randint(500, 600)
     charger3_json['stored_after_180'] = random.randint(500, 600)
-    charger3_json['north'] = settings.charger3['relation']['north']
-    charger3_json['south'] = settings.charger3['relation']['south']
-    charger3_json['west'] = settings.charger3['relation']['west']
-    charger3_json['east'] = settings.charger3['relation']['east']
     main(charger3_json)
 
     charger4_json = settings.graph_json
     charger4_json['Label'] = 'Charger4'
+    charger4_json['north'] = settings.charger4['relation']['north']
+    charger4_json['south'] = settings.charger4['relation']['south']
+    charger4_json['west'] = settings.charger4['relation']['west']
+    charger4_json['east'] = settings.charger4['relation']['east']
     charger4_json['name'] = 'charger4'
     charger4_json['meshcode'] = settings.charger4['meshcode']
     charger4_json['latitude'] = settings.charger4['latitude']
@@ -120,10 +124,6 @@ if __name__ == '__main__':
     charger4_json['stored_after_120'] = random.randint(500, 600)
     charger4_json['stored_after_150'] = random.randint(500, 600)
     charger4_json['stored_after_180'] = random.randint(500, 600)
-    charger4_json['north'] = settings.charger4['relation']['north']
-    charger4_json['south'] = settings.charger4['relation']['south']
-    charger4_json['west'] = settings.charger4['relation']['west']
-    charger4_json['east'] = settings.charger4['relation']['east']
     main(charger4_json)
 
 
