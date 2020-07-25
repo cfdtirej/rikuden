@@ -6,7 +6,7 @@ import random
 import make_json
 
 
-HOST = '127.0.0.1'
+HOST = 'localhost'
 PORT = 50002
 
 while True:
