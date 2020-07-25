@@ -4,12 +4,12 @@ import requests
 import time
 import random
 
-import charger_server
+import charger_graph
 import settings
 
 
 def main(charger_json):
-    charger = charger_server.ChargerGraph(settings.HOST, settings.AUTH, **charger_json)
+    charger = charger_graph.ChargerGraph(settings.HOST, settings.AUTH, **charger_json)
     charger.update_charger_graph()
     return None
 
