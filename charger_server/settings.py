@@ -18,3 +18,55 @@ graph_json = {
     'we_length': 559,
 }
 
+c1_info = {
+    'Label': 'Charger1',
+    'north': charger1['relation']['north'],
+    'south': charger1['relation']['south'],
+    'west': charger1['relation']['west'],
+    'east': charger1['relation']['east'],
+    'meshcode': charger1['meshcode'],
+    'latitude': charger1['latitude'],
+    'longitude': charger1['longitude'],
+    'ns_length': 463,
+    'we_length': 559
+}
+
+c2_info = {
+    'Label': 'Charger2',
+    'north': charger2['relation']['north'],
+    'south': charger2['relation']['south'],
+    'west': charger2['relation']['west'],
+    'east': charger2['relation']['east'],
+    'meshcode': charger2['meshcode'],
+    'latitude': charger2['latitude'],
+    'longitude': charger2['longitude'],
+    'ns_length': 463,
+    'we_length': 559
+}
+
+c3_info = {
+    'Label': 'Charger3',
+    'north': charger3['relation']['north'],
+    'south': charger3['relation']['south'],
+    'west': charger3['relation']['west'],
+    'east': charger3['relation']['east'],
+    'meshcode': charger3['meshcode'],
+    'latitude': charger3['latitude'],
+    'longitude': charger3['longitude'],
+    'ns_length': 463,
+    'we_length': 559
+}
+
+c4_info = {
+    'Label': 'Charger4',
+    'north': charger4['relation']['north'],
+    'south': charger4['relation']['south'],
+    'west': charger4['relation']['west'],
+    'east': charger4['relation']['east'],
+    'meshcode': charger4['meshcode'],
+    'latitude': charger4['latitude'],
+    'longitude': charger4['longitude'],
+    'ns_length': 463,
+    'we_length': 559
+}
+

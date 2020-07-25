@@ -19,5 +19,6 @@ while True:
             s.connect((HOST, PORT))
             s.sendall(msg_json.encode('utf-8'))
             recv_msg = s.recv(1024)
-            time.sleep(1)
             print(repr(recv_msg))
+            print('-------------------')
+            time.sleep(1)
