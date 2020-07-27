@@ -35,7 +35,7 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
         c4_json.update(settings.c4_info)
         update_charger_node(c4_json)
         print('update ' + str(c4_json['name']))
-        print('-------------------')
+        print('--------Done:'+str(c4_json['time'])+'-----------')
 
         self.request.sendall(b'collect')
 
