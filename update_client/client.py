@@ -11,7 +11,7 @@ PORT = 50002
 
 while True:
     current_time = int(time.time())
-    if current_time % 5 == 0:
+    if current_time % 30 == 0:
         print(current_time)
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             msg_json = make_json.make_json(current_time)
