@@ -17,7 +17,7 @@ count = 0
 while True:
     current_time = int(time.time())
     if current_time % 30 == 0:
-        print(current_time)
+        print(count)
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             json_body = {
                 "CHARGER":
