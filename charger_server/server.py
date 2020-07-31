@@ -41,7 +41,7 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
 
 
 if __name__ == "__main__":
-    server_HOST = 'localhost'
+    server_HOST = '0.0.0.0'
     server_PORT = 50002
 
     while True:

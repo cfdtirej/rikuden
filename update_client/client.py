@@ -1,25 +1,109 @@
+import csv
 import json
 import socket
 import time
 import random
-
-import make_json
+import pprint
 
 
 HOST = 'localhost'
 PORT = 50002
 
+with open('./sample.csv', 'r') as f:
+    reader = csv.reader(f)
+    table = [i for i in reader]
+    field = table[1:]
+count = 0
 while True:
     current_time = int(time.time())
     if current_time % 30 == 0:
         print(current_time)
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-            msg_json = make_json.make_json(current_time)
-            msg_json = json.dumps(msg_json)
+            json_body = {
+                "CHARGER":
+                    [
+                        {
+                            'name': 'charger1',
+                            'time': field[count][0],
+                            'used_latest': field[count][1],
+                            'stored_latest': field[count][2],
+                            "used_after_030": field[count][3],
+                            "used_after_060": field[count][4],
+                            "used_after_090": field[count][5],
+                            "used_after_120": field[count][6],
+                            "used_after_150": field[count][7],
+                            "used_after_180": field[count][8],
+                            "stored_after_030": field[count][9],
+                            "stored_after_060": field[count][10],
+                            "stored_after_090": field[count][11],
+                            "stored_after_120": field[count][12],
+                            "stored_after_150": field[count][13],
+                            "stored_after_180": field[count][14]
+                        },
+                        {
+                            'name': 'charger2',
+                            'time': field[count][0],
+                            'used_latest': field[count][1],
+                            'stored_latest': field[count][2],
+                            "used_after_030": field[count][3],
+                            "used_after_060": field[count][4],
+                            "used_after_090": field[count][5],
+                            "used_after_120": field[count][6],
+                            "used_after_150": field[count][7],
+                            "used_after_180": field[count][8],
+                            "stored_after_030": field[count][9],
+                            "stored_after_060": field[count][10],
+                            "stored_after_090": field[count][11],
+                            "stored_after_120": field[count][12],
+                            "stored_after_150": field[count][13],
+                            "stored_after_180": field[count][14]
+                        },
+                        {
+                            'name': 'charger3',
+                            'time': field[count][0],
+                            'used_latest': field[count][1],
+                            'stored_latest': field[count][2],
+                            "used_after_030": field[count][3],
+                            "used_after_060": field[count][4],
+                            "used_after_090": field[count][5],
+                            "used_after_120": field[count][6],
+                            "used_after_150": field[count][7],
+                            "used_after_180": field[count][8],
+                            "stored_after_030": field[count][9],
+                            "stored_after_060": field[count][10],
+                            "stored_after_090": field[count][11],
+                            "stored_after_120": field[count][12],
+                            "stored_after_150": field[count][13],
+                            "stored_after_180": field[count][14]
+                        },
+                        {
+                            'name': 'charger4',
+                            'time': field[count][0],
+                            'used_latest': field[count][1],
+                            'stored_latest': field[count][2],
+                            "used_after_030": field[count][3],
+                            "used_after_060": field[count][4],
+                            "used_after_090": field[count][5],
+                            "used_after_120": field[count][6],
+                            "used_after_150": field[count][7],
+                            "used_after_180": field[count][8],
+                            "stored_after_030": field[count][9],
+                            "stored_after_060": field[count][10],
+                            "stored_after_090": field[count][11],
+                            "stored_after_120": field[count][12],
+                            "stored_after_150": field[count][13],
+                            "stored_after_180": field[count][14]
+                        },
+                    ]
+            }
+            msg_json = json.dumps(json_body)
             s.connect((HOST, PORT))
             s.sendall(msg_json.encode('utf-8'))
             recv_msg = s.recv(1024)
             print(repr(recv_msg))
             print('-------------------')
-            time.sleep(1)
+            count += 1
+            if count == 48:
+                break
+            time.sleep(20)
 
